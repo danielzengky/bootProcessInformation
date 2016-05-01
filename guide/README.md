@@ -258,7 +258,7 @@ except:
 
 Test Running
 
-```/m300exair/task_exair_sampling_simulation.py```
+/m300exair/task_exair_sampling_simulation.py
 
 ![4_simulation](./img/4_simulation.png)
 
@@ -285,7 +285,7 @@ except:
 
 Test Running
 
-```analysis_thread/online_analysis_thread_runner.py```
+analysis_thread/online_analysis_thread_runner.py
 
 ![4_online_analysis](./img/4_online_analysis.png)
 
@@ -298,13 +298,13 @@ Test Running
  
  handler/m300exair_tag.txt
  
- ```
+```
  desc	id	si
 空预器进口烟气氧量	DEMO.DCS2AI.2JZA2214   %
 空预器进口过量空气系数	DEMO.DCS2AO.EXAIRCOFF	/	
- ```
+```
 
-```handler/m300exair_handler.py```
+handler/m300exair_handler.py
 
 ```python
 cur_tag=gentag("./handler/m300exair_tag.txt")
