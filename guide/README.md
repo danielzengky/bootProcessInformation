@@ -16,17 +16,17 @@ Document Software: Microsoft Visual Studio Code
  ```
       One:  Fork source bootProcessInformation to your GitHub
     
-      Two:  Clone fored bootProcessInformation to your local repository
+      Two: Clone fored bootProcessInformation to your local repository
     
-    Three: Import bootProcessInformation form local repository to Eclipse Workspace 
+    Three: Import bootProcessInformation frm local repository to Eclipse Workspace 
     
-     Four: Coding your task 
+     Four: Coding your task in local project 
     
-     Five: Push to your GitHub
+     Five: Push local project to your GitHub
     
-      Six:  push request and Merge to the base branch
+      Six: Push request and Merge your brance to the source branch
     
-    Seven:  sync with the base branch
+    Seven:  sync your brance with the  source branch
     
  ```    
 
