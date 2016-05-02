@@ -458,19 +458,19 @@ synchronous action:
 
 ![7_sync_1](./img/7_sync_1.png)
 
-### switching  the  base 
-
-Create pull request:
+after "New pull request",you see:
 
 ![7_sync_2](./img/7_sync_2.png)
 
-Choose two branches to see what’s changed or to start a new pull request.
+you need  ** compare across forks ** or ** switching  the  base  **
 
-If you need to, you can also ** compare across forks **
+so that: 
 
-** note: request pull source branch(right) to your forked branch (left) **
+** request pull source branch(right) to your forked branch (left) **
 
 ![7_sync_30](./img/7_sync_30.png)
+
+then,you can Create pull request:
 
 ![7_sync_3](./img/7_sync_3.png)
 
