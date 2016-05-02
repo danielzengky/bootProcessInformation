@@ -21,10 +21,9 @@ ws.onmessage = function(evt) {
  	    var vis = d3.select("#tag").selectAll(".taglabel")
  		     .data(tabletaglist)
  		     .text(function(d) { return d.tagdesc+": "+d.value+" "+d.tagunit; });
- 	          	  
- };   
+ 	 
  	 
 ws.onopen = function() {
- 	   ws.send("Open One New Client");
+ 	   ws.send("Open New Client");
 };
 
