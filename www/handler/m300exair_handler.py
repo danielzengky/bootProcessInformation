@@ -61,4 +61,4 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
     def on_close(self):
         if self in cur_tag.clients:
             cur_tag.clients.remove(self)
-            print("Turbine WS Clientse " + str(len(cur_tag.clients)))
+            print("WS Clientse " + str(len(cur_tag.clients)))

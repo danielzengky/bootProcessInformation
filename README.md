@@ -102,7 +102,7 @@ reference: ``` /analysis_task/demo_turbine```  exactly
 
     coding your task file.
 
-for examle your task:  m300exair
+for example your task:  m300exair
 
 ```
 analysis_task
@@ -111,7 +111,7 @@ analysis_task
          |
          |--readme.txt: your task introduction
          |
-         |--__init__.py  :  module
+         |--__init__.py  :  package
          |
          |--pyexair.py : task analysis code
          |

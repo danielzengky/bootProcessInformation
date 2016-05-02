@@ -102,7 +102,7 @@ analysis_task
          |
          |--readme.txt: your task introduction
          |
-         |--__init__.py  :  module
+         |--__init__.py  :  package
          |
          |--pyexair.py : task analysis code
          |
