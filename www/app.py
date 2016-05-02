@@ -41,7 +41,7 @@ class Application(tornado.web.Application):
             
             # add your handler，： 
             (r"/m300exair/", m300exair.initHandler),
-            (r"/m300exair_websocket",m300exair.WebSocketHandler),
+            (r"/m300exair_websocket", m300exair.WebSocketHandler),
             
         ]
 
@@ -64,7 +64,10 @@ if __name__ == '__main__':
     scheduler_demo_tb = tornado.ioloop.PeriodicCallback(demo_turbine.tb_tag.sendmsssage2client, 2000, io_loop=mainLoop)
     scheduler_demo_tb.start()
     
-    # add your  scheduler_
+    # add your  scheduler
+    
+    scheduler_m300exair = tornado.ioloop.PeriodicCallback(m300exair.cur_tag.sendmsssage2client, 2000, io_loop=mainLoop)
+    scheduler_m300exair.start()
     
     print('Web Server started! ')
     mainLoop.start()

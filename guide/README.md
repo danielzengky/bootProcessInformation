@@ -361,7 +361,12 @@ except:
             (r"/m300exair/", m300exair.initHandler),
             (r"/m300exair_websocket",m300exair.WebSocketHandler),
             
-        ]   
+        ]  
+        
+     # add your  scheduler
+    scheduler_m300exair = tornado.ioloop.PeriodicCallback(m300exair.cur_tag.sendmsssage2client, 2000, io_loop=mainLoop)
+    scheduler_m300exair.start()
+     
     
     
  ```

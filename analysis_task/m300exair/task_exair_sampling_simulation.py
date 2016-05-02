@@ -29,7 +29,7 @@ class UnitExaircoffSimulation:
         TagDefToRedisHashKey(self.ailist)
  
     def run(self):
-        self.ailist[0]['value'] = self.o2base * (1 + random.random() * 0.005)
+        self.ailist[0]['value'] = self.o2base * (1 + random.random() * 0.01)
         
         curtime = datetime.now()
         for tag in self.ailist:
