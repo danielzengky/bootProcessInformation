@@ -42,7 +42,6 @@ Forked bootProcessInformation in your GitHub account
 
 ![forked](./img/1_forked.png)
 
-
 ## Step Two:  Clone forked bootProcessInformation to your local  respository
 
 Start clone: git 
@@ -251,7 +250,7 @@ except:
     sys.path.append("..")
     from  analysis_task.m300exair.task_exair_sampling_simulation import  UnitExaircoffSimulation
  
-  # add you tesk
+  # add your task
     taginfile = os.path.join(analysis_taskpath, "m300exair", "task_exair_tag_in.txt")
     
     Simulation = UnitExaircoffSimulation(taginfile)
