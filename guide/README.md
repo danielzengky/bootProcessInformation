@@ -1,47 +1,49 @@
 
 # Step by Step: Social programming 
 
-Social programming Practice based on 
+Social(Team) programming Practice based on : bootProcessInformation
 
 The Prototype Project : Real-time Monitoring System for Thermal Power Plant 
 
-bootProcessInformation: https://github.com/Py03013052/bootProcessInformation
+### Software
 
-Git Platform: Github.com
+Version control: Github.com, EGIT
  
-Development Software: Eclipse CDT, EGIT,PyDev
+Development: Eclipse CDT,PyDev
   
-Document Software: Microsoft Visual Studio Code
-        
+Document: Microsoft Visual Studio Code
+
+###  Steps
+         
  ```
-      One:  Fork source bootProcessInformation to your GitHub
+		One:  Fork source bootProcessInformation to your gitHub account
     
-      Two: Clone fored bootProcessInformation to your local repository
+      Two: Clone forkd bootProcessInformation to your local repository
     
-    Three: Import bootProcessInformation frm local repository to Eclipse Workspace 
+    Three: Import bootProcessInformation from local repository to Eclipse Workspace 
     
-     Four: Coding your task in local project 
+     Four: Coding your task in the local project 
     
-     Five: Push local project to your GitHub
+     Five: Push to GitHub and contribute to the source repository
     
-      Six: Push request and Merge your brance to the source branch
+      Six: Merge your branch to the source branch
     
-    Seven:  sync your brance with the  source branch
+    Seven: Synchronize your branch with the source branch 
     
  ```    
 
-## Step One:  Fork dource bootProcessInformation to your gitHub account
+## Step One:  Fork source bootProcessInformation to your gitHub account
 
 Fork source bootProcessInformation
 
-![Fork](./img/1_fork.png)
+![fork](./img/1_fork.png)
 
 Forked bootProcessInformation in your GitHub account
 
-![Forked](./img/1_forked.png)
+![forked](./img/1_forked.png)
 
 
-## Step Two:  Clone fored bootProcessInformation to your local  respority
+## Step Two:  Clone forked bootProcessInformation to your local  respository
 
 Start clone: git 
 
@@ -55,17 +57,17 @@ copy source to your local
 
 ![clone_source](./img/2_clone_source.png)
 
-Brance selection
+Branch selection
 
 ![clone_branch](./img/2_clone_branch.png)
 
-cloned respority 
+cloned respository 
 
 ![clone_localgit](./img/2_clone_localgit.png)
 
-## Step Three: Import to Eclipse Workspace 
+## Step Three: Import bootProcessInformation from local repository to Eclipse Workspace
 
-import to your workspace
+import project in the cloned respository to your workspace
 
 File->import
 
@@ -77,11 +79,11 @@ choose your project
 
 ![workspace_project](./img/3_workspace_project.png)
 
-imported projects
+imported project
  
 ![3_workspace_imported](./img/3_workspace_imported.png)
 
-## Step Four: Coding your task 
+## Step Four: Coding your task in the local project 
 
 ### 4.1 your analysis_task package 
 
@@ -390,9 +392,9 @@ except:
 ![4_page_m300exair](./img/4_page_m300exair.png) 
  
  
-## Step Five:  Push to GitHub
+## Step Five:  Push to GitHub and contribute to the source repository
 
-### 5.1 commit and push to your fored repository on github
+### 5.1 Commit and push local to your fored repository on github
 
 ![5_commit_1](./img/5_commit_1.png) 
 
@@ -403,7 +405,9 @@ check result on github
 ![5_commit_3](./img/5_commit_3.png)
 
 
-### 5.2 New pull requests to source repository
+### 5.2 Contribute to the source repository
+
+New pull requests to source repository
 
 ![5_pull_1](./img/5_pull_1.png)
 
@@ -419,9 +423,9 @@ commit message
 
 ![5_pull_3](./img/5_pull_3.png)
 
-## Step Six:  Merge to the base branch(remote/local)
+## Step Six:  Merge your branch to the source branch
 
-### 6.1 remote merge
+### 6.1 source: remote merge
 
 check pull requests:
 
@@ -445,11 +449,11 @@ local after pull
 
 ![6_source_pull_4](./img/6_source_pull_4.png)
 
-## Step Seven:  forked branch sync with the source branch
+## Step Seven:  synchronize your branch with the source branch
 
-the source branch append guide after your forked, 
+the source branch append guide after your forked 
 
-sync action: 
+synchronous action: 
 
 7.1 new pull request in your forked branch 
 
@@ -457,19 +461,21 @@ sync action:
 
 ### switching  the  base 
 
-** your forked branch in the left , source repository in the right **
+Create pull request:
 
 ![7_sync_2](./img/7_sync_2.png)
 
-Create　pull request:
+Choose two branches to see what’s changed or to start a new pull request.
 
-note: request pull source branch(right) to your forked branch (left)
+If you need to, you can also ** compare across forks **
+
+** note: request pull source branch(right) to your forked branch (left) **
 
 ![7_sync_30](./img/7_sync_30.png)
 
 ![7_sync_3](./img/7_sync_3.png)
 
-you can see all commit in source branch after you forked
+you can see all commits in source branch after you forked
 
 ![7_sync_31](./img/7_sync_31.png)
 
@@ -483,6 +489,6 @@ merge pull request(source branch to your branch)
 
 ![7_sync_6](./img/7_sync_6.png)
 
-synced branch
+synchronized branch
 
 ![7_sync_7](./img/7_sync_7.png)

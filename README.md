@@ -62,7 +62,7 @@ PrototypeRealTimeMonitoring
         |
         |---doc: documents
         |
-        |---www: web werver
+        |---www: web server
              |
              |--handler
              |        |
