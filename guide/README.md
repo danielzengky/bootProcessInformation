@@ -454,7 +454,7 @@ the source branch append guide after your forked
 
 synchronous action: 
 
-7.1 new pull request in your forked branch 
+### 7.1 new pull request in your forked branch 
 
 ![7_sync_1](./img/7_sync_1.png)
 
@@ -462,19 +462,26 @@ after "New pull request",you see:
 
 ![7_sync_2](./img/7_sync_2.png)
 
-you need  ** compare across forks ** or ** switching  the  base  **
+    base fork(left): the source branch
+     
+    head fork(right): your forked branch：(yellow)
 
-so that: 
 
-** request pull source branch(right) to your forked branch (left) **
+you need  **compare across forks* or **switching  the  base** 
+
+change  base fork and head fork, so that: 
+    
+    base fork(left): your forked branch：(yellow)
+
+    head fork(right): the source branch:  
 
 ![7_sync_30](./img/7_sync_30.png)
 
-then,you can Create pull request:
+then, you can “Create pull request”:
 
 ![7_sync_3](./img/7_sync_3.png)
 
-you can see all commits in source branch after you forked
+you see all commits in source branch after you forked
 
 ![7_sync_31](./img/7_sync_31.png)
 
@@ -484,7 +491,7 @@ pull request +1 :
 
 ![7_sync_5](./img/7_sync_5.png)
 
-merge pull request(source branch to your branch)
+### 7.2 merge pull request(source branch to your branch)
 
 ![7_sync_6](./img/7_sync_6.png)
 
