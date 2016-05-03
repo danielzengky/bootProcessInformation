@@ -18,9 +18,10 @@ ws.onmessage = function(evt) {
  	    	tabletaglist[i].value=objresponse['value'][i].toFixed(2);
  	    }           	   
  	    
- 	    var vis = d3.select("#tag").selectAll(".taglabel")
+ 	    var vis = d3.select("#tag > taglabel")
  		     .data(tabletaglist)
  		     .text(function(d) { return d.tagdesc+": "+d.value+" "+d.tagunit; });
+                
     };
  	 
 ws.onopen = function() {
