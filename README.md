@@ -8,24 +8,23 @@ Email:    cmh@seu.edu.cn
 
 ## Dependencies
 
-* **Database**
+* **Database**  
 
-    * Redis 3.x
+    * Redis 3.x: http://redis.io
 
-* ** Analysis**
+* **Analysis**
 	
-	* Python3.x  
-	* redis-py
-	* SEUIF97:
-	  * https://github.com/Py03013052/SEUIF97
+   * Python3.x :  https://www.python.org/
+   * redis-py  :  https://github.com/andymccurdy/redis-py
+   * SEUIF97   :  https://github.com/Py03013052/SEUIF97
 
 * **Web Server**
 
-   * Tornado 4.X
+   * Tornado 4.X :  http://www.tornadoweb.org/
 
 * **Browser**
 
-	* Support Websocket(HTML5)
+   * Support Websocket(HTML5)
 	
 ## Run
 
