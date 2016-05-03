@@ -343,11 +343,11 @@ then modifying ```/templates/m300exair_ui.html``` contents
  
  #### 4.3.3 add your page tamplate to site
  
- midifing `/www/app.py`
+`/www/app.py`
  
-  ```python
+ ```python
  
- try:
+try:
     import www.handler.m300exair_handler as m300exair
 except:
     import handler.m300exair_handler as m300exair
@@ -355,7 +355,6 @@ except:
    handlers = [
            
             (r"/", indexHandler),
-    
             
             # add your handler，： 
             (r"/m300exair/", m300exair.initHandler),
@@ -363,25 +362,25 @@ except:
             
         ]  
         
-     # add your  scheduler
+    # add your  scheduler
     scheduler_m300exair = tornado.ioloop.PeriodicCallback(m300exair.cur_tag.sendmsssage2client, 2000, io_loop=mainLoop)
     scheduler_m300exair.start()
-     
-    
     
  ```
-   midifing `templates/index.html`
-  ```javascript 
+ `templates/index.html`
+
+ ```javascript 
    <div class="container">
         <h3 class="offset3">分析任务 </h1>
+        
         <ul class="pull-center">
 	      <li><a href="/demo_tb/">示例：高压缸效率</a></li>
+       
           <!-- add your link  --> 
           <li><a href="/m300exair/">m300exair:过量空气系数</a></li>
-            
     
         </ul>
-	   </div>
+  </div>
  ```
  #### 4.3.4 Running
  
@@ -407,7 +406,6 @@ except:
 check result on github
 
 ![5_commit_3](./img/5_commit_3.png)
-
 
 ### 5.2 Contribute to the source repository
 
