@@ -341,7 +341,7 @@ then modifying ```/templates/m300exair_ui.html``` contents
  ws = new WebSocket("ws://" + window.location.host + "/m300exair_websocket");
 ```
  
- #### 4.3.3 add your page tamplate to site
+#### 4.3.3 add your page tamplate to site
  
 `/www/app.py`
  
