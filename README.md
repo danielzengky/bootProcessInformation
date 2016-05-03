@@ -8,39 +8,36 @@ Email:    cmh@seu.edu.cn
 
 ## Dependencies
 
-### Database
+* **Database**
 
-    Redis 3.*
+    * Redis 3.x
 
-### Analysis
+* ** Analysis**
 	
-	Python3.*  
+	* Python3.x  
+	* redis-py
+	* SEUIF97:
+	  * https://github.com/Py03013052/SEUIF97
+
+* **Web Server**
+
+   * Tornado 4.X
+
+* **Browser**
+
+	* Support Websocket(HTML5)
 	
-	redis-py
+## Run
 
-	SEUIF97 
+1. analysis_thread\sampling_simulation_thread_runner.py
 	
-	https://github.com/Py03013052/SEUIF97
-
-### Web Server
-
-	Tornado 4.*
-
-### Browser
-
-	Support Websocket(HTML5)
+2. analysis_thread\online_task_thread_runner.py
 	
-### Run
+3. www\app.py
+	
+4. http://127.0.0.1:8000
 
-	1. analysis_thread\sampling_simulation_thread_runner.py
-	
-	2. analysis_thread\online_task_thread_runner.py
-	
-	3. www\app.py
-	
-	4. http://127.0.0.1:8000
-
-## Dir
+## Directory
 ```
 PrototypeRealTimeMonitoring
         |
@@ -62,7 +59,7 @@ PrototypeRealTimeMonitoring
         |
         |---doc: documents
         |
-        |---guide
+        |---guide： Social(Team) programming Practice 
         |
         |---www: web server
              |
@@ -92,10 +89,27 @@ PrototypeRealTimeMonitoring
              |
  ```     
  
-# Step By Step : Your Task
+## Step By Step : Social(Team) programming Practice
 
 https://github.com/Py03013052/bootProcessInformation/tree/s2016/guide
+
+
+## TIPS
+
+We highly recommend you practice coding whenever you have a few minutes.
+
+Even if you are just modifying available code, it will be incredibly beneficial. 
  
-## License
+You **NEED** to
+
+* use other resources,
+
+* read codes,
+
+*  **get your hands dirty** and **practice**
+    
+## Without challenging yourselves, you are simply wasting your time taking this class.
+     
+# License
 
 MIT           
