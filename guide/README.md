@@ -327,7 +327,7 @@ from www.handler.m300exair_handler import *
  
 ```
 
-#### 4.3.2 page tamplate
+#### 4.3.2 page template
 
 * copy demo  template and rename for your task 
 
