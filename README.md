@@ -107,8 +107,8 @@ You **NEED** to
 
 *  **get your hands dirty** and **practice**
     
-## Without challenging yourselves, you are simply wasting your time taking this class.
+### Without challenging yourselves, you are simply wasting your time taking this class.
      
-# License
+## License
 
 MIT           
