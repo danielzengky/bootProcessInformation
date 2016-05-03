@@ -360,7 +360,7 @@ from www.handler.m300exair_handler import *
         handlers = [
                   (r"/", indexHandler),
             
-                   # add your handler，： 
+                   # add your handler
                    (r"/m300exair/", m300exair.initHandler),
                    (r"/m300exair_websocket",m300exair.WebSocketHandler),
         ]  

@@ -106,9 +106,9 @@ You **NEED** to
 * read codes,
 
 *  **get your hands dirty** and **practice**
-    
-### Without challenging yourselves, you are simply wasting your time taking this class.
-     
+  
+**教学做是一件事，不是三件事。我们要在做上教，在做上学。不在做上用功夫，教固不成为教，学也不成为学。——陶行知**
+ 			
 ## License
 
 MIT           
