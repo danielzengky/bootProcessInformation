@@ -24,7 +24,8 @@ except:
 
 def sendmsssage2allclient():
     demo_turbine.tb_tag.sendmsssage2client()
-    # add your  scheduler
+    
+    # add your  task
     m300exair.cur_tag.sendmsssage2client()
     
 class indexHandler(tornado.web.RequestHandler):

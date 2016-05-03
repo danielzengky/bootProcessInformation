@@ -329,7 +329,7 @@ from www.handler.m300exair_handler import *
 
 #### 4.3.2 page tamplate
 
-* copy demo  tamplate and rename for your tash, 
+* copy demo  template and rename for your task 
 
 
 * then modifying ```/templates/m300exair_ui.html``` contents
@@ -338,7 +338,7 @@ from www.handler.m300exair_handler import *
  ws = new WebSocket("ws://" + window.location.host + "/m300exair_websocket");
  ```
  
-#### 4.3.3 add your page tamplate to site
+#### 4.3.3 add your page template to web site
  
 * /www/app.py
 
@@ -351,7 +351,7 @@ from www.handler.m300exair_handler import *
   
   def sendmsssage2allclient():
    
-      # add your  scheduler
+      # add your  task
       m300exair.cur_tag.sendmsssage2client()
    
   class Application(tornado.web.Application):   
