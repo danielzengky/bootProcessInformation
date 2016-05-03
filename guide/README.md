@@ -348,21 +348,22 @@ from www.handler.m300exair_handler import *
      import www.handler.m300exair_handler as m300exair
   except:
      import handler.m300exair_handler as m300exair
-    
-  handlers = [
-           
-            (r"/", indexHandler),
+  
+  def sendmsssage2allclient():
+   
+      # add your  scheduler
+      m300exair.cur_tag.sendmsssage2client()
+   
+  class Application(tornado.web.Application):   
+       
+       def __init__(self):
+        handlers = [
+                  (r"/", indexHandler),
             
-            # add your handler，： 
-            (r"/m300exair/", m300exair.initHandler),
-            (r"/m300exair_websocket",m300exair.WebSocketHandler),
-            
+                   # add your handler，： 
+                   (r"/m300exair/", m300exair.initHandler),
+                   (r"/m300exair_websocket",m300exair.WebSocketHandler),
         ]  
-        
-    # add your  scheduler
-    scheduler_m300exair = tornado.ioloop.PeriodicCallback(m300exair.cur_tag.sendmsssage2client,
-                                                         2000, io_loop=mainLoop)
-    scheduler_m300exair.start()
   ```
 
 * templates/index.html

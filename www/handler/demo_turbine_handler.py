@@ -9,16 +9,14 @@ License: this code is in the public domain
 """
 import tornado.web
 import tornado.websocket
-import json
 
 import redis
-import codecs
-import os
+
 from www.handler.gen_taginfo import gentag
 
 conn = redis.Redis('localhost')
 
-tb_tag=gentag("./handler/demo_turbine_tag.txt")
+tb_tag = gentag("./handler/demo_turbine_tag.txt")
       
 class initHandler(tornado.web.RequestHandler):
 
@@ -29,7 +27,7 @@ class initHandler(tornado.web.RequestHandler):
         tb_tag.GetTagDefInfo()
         tagvalue = tb_tag.TagSnapshot()
        
-        print('tagvaue',tagvalue)
+        print('tagvaue', tagvalue)
         print('tagvaue', tb_tag.taglist)
         for i in range(len(tagvalue)):
             tb_tag.taglist[i]['value'] = '{:.2f}'.format(tagvalue[i])

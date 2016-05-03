@@ -23,19 +23,21 @@ class UnitExaircoffSimulation:
                 tagid, desc, value = line.split()
                 self.ailist.append({'id':tagid, 'desc':desc, 'value':float(value)}) 
       
-        self.o2base = self.ailist[0]['value'] 
+        self.o2inbase = self.ailist[0]['value'] 
+        self.o2outbase = self.ailist[1]['value'] 
   
     def settag(self):
         TagDefToRedisHashKey(self.ailist)
  
     def run(self):
-        self.ailist[0]['value'] = self.o2base * (1 + random.random() * 0.01)
+        self.ailist[0]['value'] = self.o2inbase * (1 + random.random() * 0.01)
+        self.ailist[1]['value'] = self.o2outbase * (1 + random.random() * 0.01)
         
         curtime = datetime.now()
         for tag in self.ailist:
             tag['ts'] = curtime 
         SendToRedisHash(self.ailist)
 
-        print('UnitExaircoffSimulationsampling on ', self.ailist[0]['value'])
+        print('Unit Exaircoff Simulationsampling on ', self.ailist[0]['value'], self.ailist[1]['value'])
  
    

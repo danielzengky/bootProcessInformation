@@ -16,13 +16,17 @@ try:
 except:
     import handler.demo_turbine_handler as demo_turbine
 
+# import you handler 
 try:
     import www.handler.m300exair_handler as m300exair
 except:
     import handler.m300exair_handler as m300exair
 
-# import you handler 
-
+def sendmsssage2allclient():
+    demo_turbine.tb_tag.sendmsssage2client()
+    # add your  scheduler
+    m300exair.cur_tag.sendmsssage2client()
+    
 class indexHandler(tornado.web.RequestHandler):
 
     def get(self):
@@ -61,14 +65,9 @@ if __name__ == '__main__':
 
     mainLoop = tornado.ioloop.IOLoop.instance()
   
-    scheduler_demo_tb = tornado.ioloop.PeriodicCallback(demo_turbine.tb_tag.sendmsssage2client, 2000, io_loop=mainLoop)
-    scheduler_demo_tb.start()
-    
-    # add your  scheduler
-    
-    scheduler_m300exair = tornado.ioloop.PeriodicCallback(m300exair.cur_tag.sendmsssage2client, 2000, io_loop=mainLoop)
-    scheduler_m300exair.start()
-    
+    scheduler_update = tornado.ioloop.PeriodicCallback(sendmsssage2allclient, 2000, io_loop=mainLoop)
+    scheduler_update.start()
+   
     print('Web Server started! ')
     mainLoop.start()
    

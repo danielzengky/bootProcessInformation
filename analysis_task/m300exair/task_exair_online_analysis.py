@@ -9,7 +9,7 @@ from datetime import datetime
 import codecs
 
 from db.pyredis import TagDefToRedisHashKey, tagvalue_redis, SendToRedisHash
-from analysis_task.m300exair.pyexair import exaircoff
+from analysis_task.m300exair.pyexair import exaircoff, airleakagerate_aph
 
 class UnitExaircoff:
 
@@ -36,9 +36,13 @@ class UnitExaircoff:
         TagDefToRedisHashKey(self.aolist)
  
     def Onlinecal(self):
-        o2 = float(self.ailist[0]['value']) 
-        cur_exaircoff =exaircoff(o2)
+        o2in = float(self.ailist[0]['value']) 
+        o2out = float(self.ailist[1]['value']) 
+        cur_exaircoff = exaircoff(o2in)
         self.aolist[0]['value'] = cur_exaircoff
+        
+        cur_airleakagerate_aph = airleakagerate_aph(o2in, o2out)
+        self.aolist[1]['value'] = cur_airleakagerate_aph
     
     def run(self):
         tagvalue_redis(self.ailist)
