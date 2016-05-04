@@ -7,21 +7,18 @@ Email:    cmh@seu.edu.cn
 License: this code is in the public domain
 
 """
-import tornado.web
-import tornado.websocket
 import json
 
 import redis
 import codecs
-import os
 
 conn = redis.Redis('localhost')
 
 class gentag(object):
 
-    def __init__(self,tagfile):
+    def __init__(self, tagfile):
         self.clients = []
-        self.tagfile=tagfile
+        self.tagfile = tagfile
         self.clients_machine_ip = []
         self.taglist = []
 
@@ -32,21 +29,21 @@ class gentag(object):
             discardline = file.readline()
             for line in  file:
                 desc, id, si = line.split()
-                self.taglist.append({'desc':desc, 'id':id, 'si':si, 'value': '-10000', }) 
-    
+                self.taglist.append({'desc':desc, 'id':id, 'si':si, 'value': '-10000', })
+
         print(self.taglist)
 
     def TagSnapshot(self):
-   
+
         pipe = conn.pipeline()
         for element in self.taglist:
             pipe.hget(element['id'], 'value')
-        
+
         tagvaluelist = pipe.execute()
 
         tagvalue = list()
         for element in  tagvaluelist:
-            try: 
+            try:
                 tagvalue.append(float(element))
             except:
                 tagvalue.append(-1000.0)
@@ -65,4 +62,3 @@ class gentag(object):
             response_to_send = self.gettagdata()
             for c in self.clients:
                 c.write_message(json.dumps(response_to_send))
-

@@ -1,23 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-
 Author:   Cheng Maohua
 Email:    cmh@seu.edu.cn
 
-License: this code is in the public domain
-
+License: MIT
 """
 import tornado.web
 import tornado.websocket
-
-import redis
 
 try:
     from www.handler.gen_taginfo import gentag
 except:
     from handler.gen_taginfo import gentag
-
-conn = redis.Redis('localhost')
 
 tb_tag = gentag("./handler/demo_turbine_tag.txt")
 

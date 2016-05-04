@@ -45,7 +45,6 @@ class Application(tornado.web.Application):
             # TODO: add your handler
             (r"/m300exair/", m300exair.initHandler),
             (r"/m300exair_websocket", m300exair.WebSocketHandler),
-
         ]
 
         settings = dict(
