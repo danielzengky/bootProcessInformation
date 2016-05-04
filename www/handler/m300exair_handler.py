@@ -5,31 +5,68 @@ Email:    cmh@seu.edu.cn
 
 License: MIT
 """
+# -*- coding: utf-8 -*-
+"""
+
+Author:   Cheng Maohua
+Email:    cmh@seu.edu.cn
+
+License: this code is in the public domain
+
+"""
 import tornado.web
 import tornado.websocket
+
+import redis
 
 try:
     from www.handler.gen_taginfo import gentag
 except:
     from handler.gen_taginfo import gentag
-    
-try:
-    from www.handler.gen_handler import  initHandler, WebSocketHandler
-except:
-    from www.handler.gen_handler import  initHandler, WebSocketHandler
+
+conn = redis.Redis('localhost')
 
 cur_tag = gentag("./handler/m300exair_tag.txt")
 
-class initHandler(initHandler):
+class initHandler(tornado.web.RequestHandler):
 
-    def initialize(self):
-        self.title = '在线监视客户端： 过量空气系数'
-        self.html = "m300exair_ui.html"
-        self.cur_tag = cur_tag 
+    def get(self):
 
-class WebSocketHandler(WebSocketHandler):
+        title = '在线监视客户端： 过量空气系数'
 
-    def initialize(self):
-        self.cur_tag = cur_tag 
-    
-  
+        cur_tag.GetTagDefInfo()
+        tagvalue = cur_tag.TagSnapshot()
+
+        print('tagvaue', tagvalue)
+        print('tagvaue', cur_tag.taglist)
+        for i in range(len(tagvalue)):
+            cur_tag.taglist[i]['value'] = '{:.2f}'.format(tagvalue[i])
+
+        print(cur_tag.taglist)
+
+        cur_tag.clients_machine_ip.append(self.request.remote_ip)
+        print('Client IP:', self.request.remote_ip)
+
+        self.render("m300exair_ui.html", title=title, tagname=cur_tag.taglist)
+
+    def post(self):
+        pass
+
+class WebSocketHandler(tornado.websocket.WebSocketHandler):
+
+    def check_origin(self, origin):
+        return True
+
+    def on_message(self, message):
+        print("message received " + message)
+
+    def open(self):
+        if self not in cur_tag.clients:
+            cur_tag.clients.append(self)
+            self.write_message(u"Connected")
+            print("WS Clients" + str(len(cur_tag.clients)))
+
+    def on_close(self):
+        if self in cur_tag.clients:
+            cur_tag.clients.remove(self)
+            print("WS Clientse " + str(len(cur_tag.clients)))
