@@ -465,7 +465,8 @@ from analysis_task.m300exair.task_exair_online_analysis import UnitExaircoff
 
 ### 7.1 new pull request in your forked branch
 
-* "New pull request
+* "New pull request"
+
   ![7_sync_1](./img/7_sync_1.png)
 
 * after "New pull request"
@@ -480,7 +481,7 @@ from analysis_task.m300exair.task_exair_online_analysis import UnitExaircoff
 
  change  base fork and head fork, so that:
 
-   * base fork(left): your forked branch：(yellow)
+   * **base fork(left)**: your forked branch：(yellow)
 
    *  head fork(right): the source branch:  
 

@@ -15,12 +15,10 @@ import sys
 sys.path.append("./")
 sys.path.append("..")
 
-
 import www.handler.demo_turbine_handler as demo_turbine
 
 # TODO: import you handler
 import www.handler.m300exair_handler as m300exair
-
 
 def sendmsssage2allclient():
     demo_turbine.tb_tag.sendmsssage2client()
