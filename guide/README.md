@@ -1,34 +1,38 @@
 
-# Step by Step: Social programming 
+# Step by Step: Social programming
 
 Social(Team) programming Practice based on : bootProcessInformation
 
-The Prototype Project : Real-time Monitoring System for Thermal Power Plant 
+The Prototype Project : Real-time Monitoring System for Thermal Power Plant
 
 ## Software
 
-* **Version control:** Github.com, EGIT
- 
+* **Version control with Git:** Github.com, EGIT
+
 * **Development:** Eclipse CDT,PyDev
-  
+
 * **Document:** Microsoft Visual Studio Code
 
 ##  Steps
-         
+
  * **One:**  Fork source bootProcessInformation to your gitHub account
-    
+
  * **Two:**  Clone forkd bootProcessInformation to your local repository
-    
- * **Three:** Import bootProcessInformation from local repository to Eclipse Workspace 
-    
- * **Four:**  Coding your task in the local project 
-    
+
+ * **Three:** Import bootProcessInformation from local repository to Eclipse Workspace
+
+ * **Four:**  Coding your task in the local project
+
  * **Five:**  Push to GitHub and contribute to the source repository
-    
+
  * **Six:**  Merge your branch to the source branch
-    
-* **Seven:** Synchronize your branch with the source branch 
-    
+
+* **Seven:** Synchronize your branch with the source branch
+
+**NOTE: you can use any software tools， for example：**
+
+   * Github Desktop for Git client,  PyCharm for code, Atom for document   
+
 ## Step One:  Fork source bootProcessInformation to your gitHub account
 
 * Fork source bootProcessInformation
@@ -41,12 +45,12 @@ The Prototype Project : Real-time Monitoring System for Thermal Power Plant
 
 ## Step Two:  Clone forked bootProcessInformation to your local  respository
 
-* Start clone: git 
+* Start clone: git
 
  ![clone_1](./img/2_clone_1.png)
 
 * copy url to clipboard
- 
+
  ![clone_clipboard](./img/2_clone_clipboard.png)
 
 * copy source to your local
@@ -57,7 +61,7 @@ The Prototype Project : Real-time Monitoring System for Thermal Power Plant
 
  ![clone_branch](./img/2_clone_branch.png)
 
-* cloned respository 
+* cloned respository
 
  ![clone_localgit](./img/2_clone_localgit.png)
 
@@ -76,12 +80,12 @@ The Prototype Project : Real-time Monitoring System for Thermal Power Plant
  ![workspace_project](./img/3_workspace_project.png)
 
 * imported project
- 
+
  ![3_workspace_imported](./img/3_workspace_imported.png)
 
-## Step Four: Coding your task in the local project 
+## Step Four: Coding your task in the local project
 
-### 4.1 your analysis_task package 
+### 4.1 your analysis_task package
 
 * new python package : m300exair
 
@@ -111,19 +115,19 @@ analysis_task
          |--task_exair_sampling_simulation.py： sampling simulation on task_exair_tag_in.txt to redis
          |
          |--task_exair_online_analysis.py：
- 
+
  ```
 
    ![4_m300exair](./img/4_m300exair.png)
 
 
-* then,coding: 
+* then,coding:
 
 #### 4.1.1 /analysis_task/__init__.py
 
 
 ```python
-# add your module here
+# TODO: add your package
 from analysis_task.m300exair import *
 ```
 
@@ -149,91 +153,94 @@ DEMO.DCS2AI.2JZA2226	空预器进口烟气氧量	3.8375
 id                       	desc            defaultvalue
 DEMO.DCS2AO.EXAIRCOFF  空预器进口过量空气系数     1.25
 ```
-#### 4.1.4 m300exair/task_exair_online_analysis.py
+#### 4.1.4 exair_online_analysis
 
-```python
-from datetime import datetime
-import codecs
+* m300exair/task_exair_online_analysis.py
 
-from db.pyredis import TagDefToRedisHashKey, tagvalue_redis, SendToRedisHash
-from analysis_task.m300exair.pyexair import exaircoff
+ ```python
+ from datetime import datetime
+ import codecs
 
-class UnitExaircoff:
+  from db.pyredis import TagDefToRedisHashKey, tagvalue_redis, SendToRedisHash
+ from analysis_task.m300exair.pyexair import exaircoff
+
+  class UnitExaircoff:
 
     def __init__(self, tagin, tagout):
+
         self.ailist = []
-   
         file = codecs.open(tagin, 'r', 'utf-8')
         with file:
             discardline = file.readline()
             for line in  file:
                 tagid, desc, value = line.split()
-                self.ailist.append({'id':tagid}) 
-      
-    
+                self.ailist.append({'id':tagid})
+
         self.aolist = []
         file = codecs.open(tagout, 'r', 'utf-8')
         with file:
             discardline = file.readline()
             for line in  file:
                 tagid, desc, value = line.split()
-                self.aolist.append({'id':tagid, 'desc':desc, 'value':None, 'ts':None}) 
- 
+                self.aolist.append({'id':tagid, 'desc':desc, 'value':None, 'ts':None})
+
     def setouttag(self):
         TagDefToRedisHashKey(self.aolist)
- 
+
     def Onlinecal(self):
-        o2 = float(self.ailist[0]['value']) 
+        o2 = float(self.ailist[0]['value'])
         cur_exaircoff =exaircoff(o2)
         self.aolist[0]['value'] = cur_exaircoff
-    
+
     def run(self):
         tagvalue_redis(self.ailist)
         self.Onlinecal()
         curtime = datetime.now()
         for tag in self.aolist:
-            tag['ts'] = curtime 
+            tag['ts'] = curtime
 
         SendToRedisHash(self.aolist)
 
         tagvalue_redis(self.aolist)
-        
+
         for tag in self.aolist:
             print(tag['desc'], tag['value'])
 
-```
+ ```
 
-#### 4.1.5 /m300exair/task_exair_sampling_simulation.py
+#### 4.1.5 sampling simulation
 
-```python
-class UnitExaircoffSimulation:
+* /m300exair/task_exair_sampling_simulation.py
 
-    def __init__(self, tagfile):
-        
-        self.ailist = []
+ ```python
+  class UnitExaircoffSimulation:
+
+      def __init__(self, tagfile):
+
+          self.ailist = []
         file = codecs.open(tagfile, 'r', 'utf-8')
         with file:
             discardline = file.readline()
             for line in  file:
                 tagid, desc, value = line.split()
-                self.ailist.append({'id':tagid, 'desc':desc, 'value':float(value)}) 
-      
-        self.o2base = self.ailist[0]['value'] 
-  
-    def settag(self):
-        TagDefToRedisHashKey(self.ailist)
- 
-    def run(self):
-        self.ailist[0]['value'] = self.o2base * (1 + random.random() * 0.005)
-        
-        curtime = datetime.now()
-        for tag in self.ailist:
-            tag['ts'] = curtime 
-        SendToRedisHash(self.ailist)
+                self.ailist.append({'id':tagid, 'desc':desc, 'value':float(value)})
 
-        print('UnitExaircoffSimulation sampling on ', self.ailist[0]['value'])
+        self.o2base = self.ailist[0]['value']
 
-```
+      def settag(self):
+          TagDefToRedisHashKey(self.ailist)
+
+      def run(self):
+          self.ailist[0]['value'] = self.o2base * (1 + random.random() * 0.005)
+
+          curtime = datetime.now()
+          for tag in self.ailist:
+              tag['ts'] = curtime
+          SendToRedisHash(self.ailist)
+
+         print('UnitExaircoffSimulation sampling on ', self.ailist[0]['value'])
+
+ ```
 
 ### 4.2 your analysis_task to analysis_thread
 
@@ -241,20 +248,16 @@ class UnitExaircoffSimulation:
 
 * Add code
 
-```python
-try:   
-    from analysis_task.m300exair.task_exair_sampling_simulation import UnitExaircoffSimulation
-except:
-    import sys
-    sys.path.append("..")
-    from  analysis_task.m300exair.task_exair_sampling_simulation import  UnitExaircoffSimulation
- 
-  # add your task
+ ```python
+ # TODO：add your module
+from analysis_task.m300exair.task_exair_sampling_simulation import UnitExaircoffSimulation
+
+    # add your task
     taginfile = os.path.join(analysis_taskpath, "m300exair", "task_exair_tag_in.txt")
-    
+
     Simulation = UnitExaircoffSimulation(taginfile)
     TaskList.append(Simulation)    
-```
+ ```
 
 * Test Running
 
@@ -266,22 +269,17 @@ except:
 
 * Add code
 
-```python
-# add your module 
-try:
-    from analysis_task.m300exair.task_exair_online_analysis import UnitExaircoff
-except:
-    import sys
-    sys.path.append("..")
-    from analysis_task.m300exair.task_exair_online_analysis import UnitExaircoff
-    
-     # add your task
+ ```python
+# add your module
+from analysis_task.m300exair.task_exair_online_analysis import UnitExaircoff
+
+     # TODO: add your task
     taginfile = os.path.join(analysis_taskpath, "m300exair", "task_exair_tag_in.txt")
     tagoutfile = os.path.join(analysis_taskpath, "m300exair", "task_exair_tag_out.txt")
-    
+
     TaskExaircoff = UnitExaircoff(taginfile, tagoutfile)
     TaskList.append(TaskExaircoff)
-```
+  ```
 
 * Test Running
 
@@ -293,117 +291,123 @@ except:
 ### 4.3 your page and handle to www
 
 #### 4.3.1 page handler
- 
+
 * copy  demo files and rename to your task,then codeing
- 
+
   * handler/m300exair_tag.txt
- 
+
   ```
  desc	               id	               si
 空预器进口烟气氧量	 DEMO.DCS2AI.2JZA2214   %
-空预器进口过量空气系数	DEMO.DCS2AO.EXAIRCOFF	/	
+空预器进口过量空气系数	DEMO.DCS2AO.EXAIRCOFF	/
   ```
 
 * handler/m300exair_handler.py
 
-```python
-cur_tag=gentag("./handler/m300exair_tag.txt")
-      
-class initHandler(tornado.web.RequestHandler):
+ ```python
 
-    def get(self):
+  cur_tag=gentag("./handler/m300exair_tag.txt")
 
-        title = '在线监视客户端： 过量空气系数'
-        
-        cur_tag.GetTagDefInfo()
-        tagvalue = cur_tag.TagSnapshot(
+  class initHandler(tornado.web.RequestHandler):
+
+        def get(self):
+
+             title = '在线监视客户端： 过量空气系数'
+
+            cur_tag.GetTagDefInfo()
+            tagvalue = cur_tag.TagSnapshot(）
  ```
 
 * modifing `www/__init__.py`
 
-```python
- # add your handler
-from www.handler.m300exair_handler import *
- 
-```
+ ```python
+   # TODO: add your handler
+  from www.handler.m300exair_handler import *
+
+ ```
 
 #### 4.3.2 page template
 
-* copy demo  template and rename for your task 
+* copy demo  template and rename for your task
 
 
 * then modifying ```/templates/m300exair_ui.html``` contents
 
  ```javascript
+ // TODO: your   websocket URL
  ws = new WebSocket("ws://" + window.location.host + "/m300exair_websocket");
  ```
- 
+
 #### 4.3.3 add your page template to web site
- 
+
 * /www/app.py
 
  ```python
- 
-  try:
-     import www.handler.m300exair_handler as m300exair
-  except:
-     import handler.m300exair_handler as m300exair
-  
-  def sendmsssage2allclient():
-   
-      # add your  task
-      m300exair.cur_tag.sendmsssage2client()
-   
-  class Application(tornado.web.Application):   
-       
-       def __init__(self):
-        handlers = [
+   # TODO: import you handler
+   import www.handler.m300exair_handler as m300exair
+
+    def sendmsssage2allclient():
+
+          # TODO: add your  task
+          m300exair.cur_tag.sendmsssage2client()
+
+   class Application(tornado.web.Application):   
+
+         def __init__(self):
+             handlers = [
                   (r"/", indexHandler),
-            
-                   # add your handler
+
+                   # TODO: add your handler
                    (r"/m300exair/", m300exair.initHandler),
                    (r"/m300exair_websocket",m300exair.WebSocketHandler),
-        ]  
-  ```
+              ]  
+```
 
 * templates/index.html
 
- ```javascript 
+ ```javascript
    <div class="container">
         <h3 class="offset3">分析任务 </h1>
-        
+
         <ul class="pull-center">
 	      <li><a href="/demo_tb/">示例：高压缸效率</a></li>
-       
-          <!-- add your link  --> 
+
+          <!-- add your link  -->
           <li><a href="/m300exair/">m300exair:过量空气系数</a></li>
-    
+
         </ul>
   </div>
  ```
- 
+
 #### 4.3.4 Running
- 
+
 `/www/app.py`
- 
+
 * Home Page
- 
+
   ![4_index](./img/4_index.png)
- 
+
 * your task page
- 
-  ![4_page_m300exair](./img/4_page_m300exair.png) 
- 
- 
+
+  ![4_page_m300exair](./img/4_page_m300exair.png)
+
+### 4.4 review your code
+
+* **TODO** comment tag in your coding location,
+
+   "Windows->Show View->Tasks" to review your code
+
+    ![4_todo_tag_task](./img/4_todo_tag_task.png)
+
 ## Step Five:  Push to GitHub and contribute to the source repository
 
 ### 5.1 Commit and push local to your fored repository on github
 
 * Commit
 
-  ![5_commit_1](./img/5_commit_1.png) 
+  ![5_commit_1](./img/5_commit_1.png)
 
-  ![5_commit_2](./img/5_commit_2.png) 
+  ![5_commit_2](./img/5_commit_2.png)
 
 * check result on github
 
@@ -457,25 +461,25 @@ from www.handler.m300exair_handler import *
 
 ## Step Seven:  synchronize your branch with the source branch
 
-* the source branch appended guide after your forked, synchronous action: 
+* the source branch appended guide after your forked, synchronous action:
 
-### 7.1 new pull request in your forked branch 
+### 7.1 new pull request in your forked branch
 
 * "New pull request
   ![7_sync_1](./img/7_sync_1.png)
 
 * after "New pull request"
    * base fork(left): the source branch
-     
+
    * head fork(right): your forked branch：(yellow)
 
  ![7_sync_2](./img/7_sync_2.png)
 
 
-* you need  **compare across forks** or **switching  the  base** 
+* you need  **compare across forks** or **switching  the  base**
 
- change  base fork and head fork, so that: 
-    
+ change  base fork and head fork, so that:
+
    * base fork(left): your forked branch：(yellow)
 
    *  head fork(right): the source branch:  
@@ -491,7 +495,7 @@ from www.handler.m300exair_handler import *
    ![7_sync_31](./img/7_sync_31.png)
 
 * pull request +1 :
- 
+
   ![7_sync_4](./img/7_sync_4.png)
 
   ![7_sync_5](./img/7_sync_5.png)
@@ -505,4 +509,3 @@ from www.handler.m300exair_handler import *
 * synchronized branch
 
  ![7_sync_7](./img/7_sync_7.png)
-

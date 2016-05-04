@@ -1,13 +1,13 @@
 
-## Web server 
+## Web server
 
-Web server based on Tornado 
+Web server based on Tornado
 
 ## Technical
 
 Tornado Server
 
-Websocket 
+Websocket
 
 ## Launching the server
 
@@ -27,4 +27,4 @@ Author:   Cheng Maohua
 
 Email:    cmh@seu.edu.cn
 
-License: this code is in the public domain
+License: MIT

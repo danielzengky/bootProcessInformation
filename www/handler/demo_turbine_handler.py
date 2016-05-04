@@ -12,26 +12,29 @@ import tornado.websocket
 
 import redis
 
-from www.handler.gen_taginfo import gentag
+try:
+    from www.handler.gen_taginfo import gentag
+except:
+    from handler.gen_taginfo import gentag
 
 conn = redis.Redis('localhost')
 
 tb_tag = gentag("./handler/demo_turbine_tag.txt")
-      
+
 class initHandler(tornado.web.RequestHandler):
 
     def get(self):
 
         title = '在线监视客户端： 高压缸效率'
-        
+
         tb_tag.GetTagDefInfo()
         tagvalue = tb_tag.TagSnapshot()
-       
+
         print('tagvaue', tagvalue)
         print('tagvaue', tb_tag.taglist)
         for i in range(len(tagvalue)):
             tb_tag.taglist[i]['value'] = '{:.2f}'.format(tagvalue[i])
-        
+
         print(tb_tag.taglist)
 
         tb_tag.clients_machine_ip.append(self.request.remote_ip)

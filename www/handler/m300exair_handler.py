@@ -12,26 +12,29 @@ import tornado.websocket
 
 import redis
 
-from www.handler.gen_taginfo import gentag
+try:
+    from www.handler.gen_taginfo import gentag
+except:
+    from handler.gen_taginfo import gentag
 
 conn = redis.Redis('localhost')
 
 cur_tag = gentag("./handler/m300exair_tag.txt")
-      
+
 class initHandler(tornado.web.RequestHandler):
 
     def get(self):
 
         title = '在线监视客户端： 过量空气系数'
-        
+
         cur_tag.GetTagDefInfo()
         tagvalue = cur_tag.TagSnapshot()
-       
+
         print('tagvaue', tagvalue)
         print('tagvaue', cur_tag.taglist)
         for i in range(len(tagvalue)):
             cur_tag.taglist[i]['value'] = '{:.2f}'.format(tagvalue[i])
-        
+
         print(cur_tag.taglist)
 
         cur_tag.clients_machine_ip.append(self.request.remote_ip)
