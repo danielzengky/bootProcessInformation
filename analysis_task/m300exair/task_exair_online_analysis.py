@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Author:   Cheng Maohua
-Email:    cmh@seu.edu.cn
-
-License: this code is in the public domain
+    Author:   Cheng Maohua
+    Email:    cmh@seu.edu.cn
+    License: MIT
 """
 from datetime import datetime
 import codecs
@@ -36,17 +35,24 @@ class UnitExaircoff:
         TagDefToRedisHashKey(self.aolist)
  
     def Onlinecal(self):
+        
         o2in = float(self.ailist[0]['value']) 
         o2out = float(self.ailist[1]['value']) 
+        
         cur_exaircoff = exaircoff(o2in)
+       
         self.aolist[0]['value'] = cur_exaircoff
         
         cur_airleakagerate_aph = airleakagerate_aph(o2in, o2out)
+        
         self.aolist[1]['value'] = cur_airleakagerate_aph
     
     def run(self):
+        
         tagvalue_redis(self.ailist)
+        
         self.Onlinecal()
+        
         curtime = datetime.now()
         for tag in self.aolist:
             tag['ts'] = curtime 

@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+    Author:   Cheng Maohua
+    Email:    cmh@seu.edu.cn
+    License: MIT
 """
 
-Author:   Cheng Maohua
-Email:    cmh@seu.edu.cn
-
-License: this code is in the public domain
-"""
 import tornado.web
 import tornado.httpserver
 import tornado.ioloop
@@ -17,7 +17,7 @@ sys.path.append("..")
 
 import www.handler.demo_turbine_handler as demo_turbine
 
-# TODO: import you handler
+# TODO: import your handler
 import www.handler.m300exair_handler as m300exair
 
 def sendmsssage2allclient():

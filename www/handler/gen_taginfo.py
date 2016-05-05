@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-
-Author:   Cheng Maohua
-Email:    cmh@seu.edu.cn
-
-License: this code is in the public domain
-
+    Author:   Cheng Maohua
+    Email:    cmh@seu.edu.cn
+    License: MIT
 """
+
 import json
 
 import redis

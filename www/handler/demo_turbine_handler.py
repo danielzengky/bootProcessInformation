@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Author:   Cheng Maohua
-Email:    cmh@seu.edu.cn
-
-License: MIT
+    Author:   Cheng Maohua
+    Email:    cmh@seu.edu.cn
+    License: MIT
 """
+
 import tornado.web
 import tornado.websocket
 

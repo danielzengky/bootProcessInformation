@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-
-Author:   Cheng Maohua
-Email:    cmh@seu.edu.cn
-
-License: this code is in the public domain
+    Author:   Cheng Maohua
+    Email:    cmh@seu.edu.cn
+    License: MIT
 """
 import os
 
@@ -12,10 +10,7 @@ import sys
 sys.path.append("./")
 sys.path.append("..")
 
-try:
-    from analysis_thread.online_analysis_thread import PeriodAnalysis
-except:
-    from online_analysis_thread import PeriodAnalysis
+from analysis_thread.online_analysis_thread import PeriodAnalysis
 
 from analysis_task.demo_turbine.task_turbine_online_analysis import UnitHP
 
