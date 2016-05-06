@@ -9,9 +9,7 @@ The Prototype Project : Real-time Monitoring System for Thermal Power Plant
 
 * **Version control with Git:** Github.com, EGIT
 
-* **Development:** Eclipse CDT,PyDev
-
-* **Document:** Microsoft Visual Studio Code
+* **Development:** Eclipse CDT,PyDev,Markdown Editor, Github Flavored Markdown Viewer
 
 ##  Steps
 
@@ -142,14 +140,14 @@ def exaircoff(o2):
 
 * m300exair/task_exair_tag_in.txt
 
-```
+ ```
 id	                       desc        	defaultvalue
 DEMO.DCS2AI.2JZA2226	空预器进口烟气氧量	3.8375
 ```
 
 * m300exair/task_exair_tag_out.txt
 
-```
+ ```
 id                       	desc            defaultvalue
 DEMO.DCS2AO.EXAIRCOFF  空预器进口过量空气系数     1.25
 ```

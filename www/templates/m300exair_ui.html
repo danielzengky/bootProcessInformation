@@ -17,11 +17,11 @@
     	
       {% for item in tagname %}
            var obj=new Object();
- 		   obj.tagdesc="{{item['desc']}}";
+ 		       obj.tagdesc="{{item['desc']}}";
            obj.tagunit="{{item['si']}}";
- 	   	   obj.value="{{item['value']}}";
+ 	   	     obj.value="{{item['value']}}";
  		
- 		   tabletaglist.push(obj);
+ 		       tabletaglist.push(obj);
       {% end %}
   	 
    // TODO: your websocket URL 
