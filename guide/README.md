@@ -27,9 +27,11 @@ The Prototype Project : Real-time Monitoring System for Thermal Power Plant
 
 * **Seven:** Synchronize your branch with the source branch
 
-**NOTE: you can use any software tools， for example：**
-
-   * Github Desktop for Git client,  PyCharm for code, Atom for document   
+**NOTE: you may 
+     
+   * use any software tools， for example：Github Desktop for Git client,  PyCharm for code, Atom for document   
+   
+   * clone source branch to **your local repository**,push and synchronize your local branch with the source branch
 
 ## Step One:  Fork source bootProcessInformation to your gitHub account
 
@@ -41,7 +43,7 @@ The Prototype Project : Real-time Monitoring System for Thermal Power Plant
 
  ![forked](./img/1_forked.png)
 
-## Step Two:  Clone forked bootProcessInformation to your local  respository
+## Step Two:  Clone forked branch  to your local  respository
 
 * Start clone: git
 
