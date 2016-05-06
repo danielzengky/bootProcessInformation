@@ -10,10 +10,7 @@ import tornado.websocket
 
 import redis
 
-try:
-    from www.handler.gen_taginfo import gentag
-except:
-    from handler.gen_taginfo import gentag
+from www.handler.gen_taginfo import gentag
 
 conn = redis.Redis('localhost')
 

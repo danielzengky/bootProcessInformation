@@ -8,10 +8,7 @@
 import tornado.web
 import tornado.websocket
 
-try:
-    from www.handler.gen_taginfo import gentag
-except:
-    from handler.gen_taginfo import gentag
+from www.handler.gen_taginfo import gentag
 
 tb_tag = gentag("./handler/demo_turbine_tag.txt")
 
