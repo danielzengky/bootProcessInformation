@@ -88,7 +88,7 @@ PrototypeRealTimeMonitoring
              |
  ```     
 
-## Step By Step : Social(Team) programming Practice
+## Step By Step : Team Programming Practice
 
 https://github.com/Py03013052/bootProcessInformation/tree/s2016/guide
 

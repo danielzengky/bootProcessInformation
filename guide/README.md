@@ -1,7 +1,7 @@
 
-# Step by Step: Social programming
+# Step by Step: Team programming
 
-Social(Team) programming Practice based on : bootProcessInformation
+Team(Social) programming practice based on : bootProcessInformation
 
 The Prototype Project : Real-time Monitoring System for Thermal Power Plant
 
@@ -13,17 +13,17 @@ The Prototype Project : Real-time Monitoring System for Thermal Power Plant
 
 ##  Steps
 
- * **One:**  Fork source bootProcessInformation to your gitHub account
+ * **One:**  Fork source branch to your gitHub account and
+ 
+ * **Two:**  Clone forkd branch to your local repository
 
- * **Two:**  Clone forkd bootProcessInformation to your local repository
-
- * **Three:** Import bootProcessInformation from local repository to Eclipse Workspace
+ * **Three:** Import the project from local repository to Eclipse Workspace
 
  * **Four:**  Coding your task in the local project
 
  * **Five:**  Push to GitHub and contribute to the source repository
 
- * **Six:**  Merge your branch to the source branch
+ * **Six:**  Merge your branch to the source branch and pull to the local
 
 * **Seven:** Synchronize your branch with the source branch
 
@@ -431,7 +431,7 @@ from analysis_task.m300exair.task_exair_online_analysis import UnitExaircoff
 
    ![5_pull_3](./img/5_pull_3.png)
 
-## Step Six:  Merge your branch to the source branch
+## Step Six:  Merge your branch to the source branch and pull to the local
 
 ### 6.1 source: remote merge
 
